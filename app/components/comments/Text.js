@@ -1,24 +1,26 @@
-const commentsUser = [
+export const commentsUser = [
   {
-    src: "/me/images/24.png",
     name: "سارا محمدی",
-    title: "طرفدار محصولات شیگلم",
+    title: "خریدار وفادار",
+    src: "/images/p15.png",
+    star: 5,
   },
   {
-    src: "/me/images/25.png",
     name: "مهتاب کرامتی",
-    title: " طرفدار محصولات شیگلم",
+    title: "مشتری VIP",
+    src: "/images/p16.png",
+    star: 3,
   },
   {
-    src: "/me/images/26.png",
     name: "آتنا عصار",
-    title: "طرفدار محصولات شیگلم",
+    title: "طرفدار شیگلم",
+    src: "/images/p17.png",
+    star: 4,
   },
   {
-    src: "/me/images/27.png",
     name: "مبینا اکبری",
-    title: "طرفدار محصولات شیگلم",
+    title: "خریدار جدید",
+    src: "/images/p18.png",
+    star: 5,
   },
 ];
-
-export default commentsUser;

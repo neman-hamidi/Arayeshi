@@ -1,18 +1,28 @@
-const btns = [
-  " همه محصولات",
-  " اوردینری",
-  " شیگلم",
-  " ویکتوریا سیکرت",
-  " جان استونز",
+export const btns = ["همه", "پوستی", "آرایشی", "عطر", "اکسسوری"];
+
+export const details = [
+  { 
+    title: "سرم جوانساز آبرسان", 
+    price: "890,000", 
+    brand: "Ordinary Lab",
+    src: "/images/body.jpg" 
+  },
+  { 
+    title: "روغن ترمیم‌کننده شب", 
+    price: "1,200,000", 
+    brand: "Luxe Flora",
+    src: "/images/p12.png" 
+  },
+  { 
+    title: "کرم پودر مخملی", 
+    price: "650,000", 
+    brand: "Sheglam",
+    src: "/images/kerem.jpg" 
+  },
+  { 
+    title: "ماسک ذغال فعال", 
+    price: "420,000", 
+    brand: "Purify",
+    src: "/images/p13.png" 
+  }
 ];
-const details = [
-  { title: "تمیز کننده پوست", price: "750,000", src: "/me/images/best6.png" },
-  { title: "اوردینری", price: "58,000", src: "/me/images/best2.png" },
-  { title: "شفاف کننده", price: "750,000", src: "/me/images/best3.png" },
-  { title: "شیگلم", price: "300,000", src: "/me/images/best4.png" },
-  { title: "استونز", price: "12,000", src: "/me/images/best5.png" },
-  { title: "ضدجوش و لکه بر", price: "90,000", src: "/me/images/best6.png" },
-  { title: "لایه بر پوست", price: "340,000", src: "/me/images/best7.png" },
-  { title: "ضدجوش و لکه بر", price: "100,000", src: "/me/images/best8.png" },
-];
-export { btns, details };

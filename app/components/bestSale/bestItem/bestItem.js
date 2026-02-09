@@ -1,44 +1,68 @@
 import Image from "next/image";
+import { FiShoppingBag, FiPlus, FiArrowUpRight } from "react-icons/fi";
 
-export default function BestItem({ title, price, src }) {
+export default function BestItem({ title, price, src, delay, brand }) {
   return (
-    <div className="group relative w-[332px] h-[350px] p-[15px] bg-white hover:bg-slate-50 border border-slate-100 rounded-[40px] transition-all duration-500 hover:shadow-2xl hover:shadow-slate-200/60">
-      
-      {/* نگهدارنده عکس با برش خاص */}
-      <div className="overflow-hidden rounded-t-[30px] rounded-b-[10px] rounded-br-[80px] h-[200px]">
+    <div
+      className="reveal-item group relative w-full bg-white rounded-[2.5rem] lg:rounded-[3.5rem] p-3 lg:p-4 transition-all duration-1000 hover:shadow-[0_40px_80px_-20px_rgba(0,0,0,0.08)] border border-transparent hover:border-slate-100"
+      style={{ transitionDelay: `${delay}ms` }}
+    >
+      {/* Container تصویر: ارتفاع کمتر در موبایل برای جلوگیری از اسکرول زیاد */}
+      <div className="relative h-[240px] sm:h-[280px] lg:h-[320px] w-full overflow-hidden rounded-[2rem] lg:rounded-[2.8rem] bg-[#f8f8f8]">
         <Image
           src={src}
           alt={title}
-          className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
-          width={301}
-          height={198}
+          fill
+          className="object-cover transition-transform duration-[1.5s] lg:duration-[2s] group-hover:scale-110"
+          loading="lazy"
+          sizes="(max-width: 768px) 50vw, 25vw"
         />
-      </div>
 
-      <div className="px-2">
-        <h3 className="text-gray-800 font-bold text-base mt-4 mb-1 transition-colors group-hover:text-green-600">
-          {title}
-        </h3>
-        <p className="text-[11px] font-medium tracking-wider text-zinc-400 uppercase">Miseico Premium</p>
-        
-        <div className="flex justify-between mt-4 items-center">
-          <div>
-            <span className="text-xl font-black text-gray-900">{price}</span>
-            <span className="text-[10px] text-zinc-500 mr-1">هزار تومان</span>
-          </div>
-
-          {/* دکمه خرید با استایل متفاوت */}
-          <button className="relative flex items-center justify-center w-10 h-10 bg-black text-white rounded-2xl overflow-hidden transition-all duration-300 group-hover:bg-green-500 group-hover:rounded-full active:scale-90">
-            <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
-               <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
-            </svg>
+        {/* دکمه افزودن سریع (همیشه در موبایل در دسترس، در دسکتاپ با هوور) */}
+        <div className="absolute inset-0 bg-black/20 opacity-0 lg:group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
+          <button className="w-12 h-12 lg:w-16 lg:h-16 bg-white rounded-full flex items-center justify-center text-black">
+            <FiPlus size={20} />
           </button>
         </div>
+
+        {/* بج قیمت: کوچک‌تر و شیک‌تر در موبایل */}
+        <div className="absolute top-6 right-6 flex items-center gap-2 bg-white/20 backdrop-blur-xl border border-white/30 px-4 py-2 rounded-2xl text-white">
+          <span className="text-black/70 font-black text-[10px] lg:text-sm">
+            {price}
+          </span>
+          <span className="text-[8px] text-black/70 mr-0.5 font-light tracking-tighter">
+            تومان
+          </span>
+        </div>
       </div>
-      
-      {/* یک المان تزیینی کوچک برای گوشه کارت */}
-      <div className="absolute top-4 right-4 bg-white/80 backdrop-blur-md px-3 py-1 rounded-full text-[10px] font-bold text-orange-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-        پیشنهاد ویژه
+
+      {/* بخش اطلاعات */}
+      <div className="mt-5 lg:mt-8 px-2 lg:px-4 pb-2 text-right">
+        <div className="flex justify-between items-center mb-2">
+          <span className="text-[8px] lg:text-[10px] font-black text-slate-400 tracking-widest uppercase">
+            {brand}
+          </span>
+          <FiArrowUpRight className="text-slate-300 group-hover:text-green-500 transition-colors" />
+        </div>
+
+        <h3 className="text-base lg:text-2xl font-bold lg:font-light text-slate-900 group-hover:text-green-600 transition-all duration-300 leading-tight">
+          {title}
+        </h3>
+
+        <div className="mt-6 lg:mt-8 flex items-center justify-between">
+          {/* انتخاب رنگ‌های مینیمال */}
+          <div className="flex -space-x-1.5 lg:-space-x-2">
+            <div className="w-5 h-5 lg:w-7 lg:h-7 rounded-full border-2 border-white bg-rose-200 shadow-sm" />
+            <div className="w-5 h-5 lg:w-7 lg:h-7 rounded-full border-2 border-white bg-amber-100 shadow-sm" />
+          </div>
+
+          <button className="flex items-center gap-1.5 lg:gap-2 text-[10px] lg:text-xs font-black text-slate-950">
+            <span className="hidden sm:inline">مشاهده کالا</span>
+            <div className="w-8 h-8 lg:w-10 lg:h-10 bg-slate-50 group-hover:bg-green-50 rounded-full flex items-center justify-center transition-all">
+              <FiShoppingBag size={14} className="group-hover:text-green-600" />
+            </div>
+          </button>
+        </div>
       </div>
     </div>
   );

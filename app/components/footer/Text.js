@@ -1,39 +1,17 @@
-import { FaInstagram } from "react-icons/fa6";
-import { FaXTwitter } from "react-icons/fa6";
+import { FaInstagram, FaXTwitter } from "react-icons/fa6";
 import { BiLogoTelegram } from "react-icons/bi";
-const icons = [
-  {
-    icon: (
-      <FaInstagram className="hover:text-purple-700  transition-colors duration-300" />
-    ),
-  },
-  { icon: <FaXTwitter /> },
-  {
-    icon: (
-      <BiLogoTelegram className="hover:text-blue-600 transition-colors duration-300" />
-    ),
-  },
+
+export const icons = [
+  { icon: <FaInstagram size={18} /> },
+  { icon: <FaXTwitter size={16} /> },
+  { icon: <BiLogoTelegram size={18} /> },
 ];
-const lis = [
-  {
-    title: "صفحه اصلی",
-    className: "text-lg hover:text-green-400 transition-colors duration-300",
-  },
-  {
-    title: "فروشگاه",
-    className: "text-base hover:text-green-400 transition-colors duration-300",
-  },
-  {
-    title: "پیگیری سفارشات",
-    className: "text-base hover:text-green-400 transition-colors duration-300",
-  },
-  {
-    title: "درباره ما",
-    className: "text-base hover:text-green-400 transition-colors duration-300",
-  },
-  {
-    title: "تماس با ما",
-    className: "text-base hover:text-green-400 transition-colors duration-300",
-  },
+
+export const lis = [
+  { title: "صفحه اصلی",href:"/" },
+  { title: "فروشگاه تخصصی",href:"/shop" },
+  { title: "سبد خرید",href:"/cart" },
+  { title: "مجله مراقبت از پوست",href:"/blog" },
+  { title: "درباره ما",href:"/about" },
+  { title: "تماس با ما",href:"/contact" },
 ];
-export { icons, lis };

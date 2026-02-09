@@ -3,9 +3,11 @@
 @tailwind utilities;
 @font-face {
   font-family: vazir;
-  src: local(vazir) url(/me/Fonts/vazir.eot) format(embedded-opentype),
-    url(/me/Fonts/vazir.ttf) format(truetype), url(/me/Fonts/vazir.woff) format(woff),
-    url(/me/Fonts/vazir.woff2) format(woff2);
+  src:
+    local(vazir) url(/fonts/vazir.eot) format(embedded-opentype),
+    url(/fonts/vazir.ttf) format(truetype),
+    url(/fonts/vazir.woff) format(woff),
+    url(/fonts/vazir.woff2) format(woff2);
   font-display: swap;
 }
 
@@ -14,6 +16,15 @@
   --foreground: #171717;
 }
 
+body {
+  color: var(--foreground);
+  background: #f5f5f5;
+  font-family: vazir, sans-serif;
+}
+/* *{
+  border: 1px red solid;
+} */
+
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #f5f5f5;
@@ -21,34 +32,84 @@
   }
 }
 
-/* Scroll Bar Custom */
-
-body {
-  color: var(--foreground);
-  background: #f5f5f5;
-  font-family: vazir, sans-serif;
+/* کل فضای اسکرول‌بار */
+::-webkit-scrollbar {
+  width: 8px; /* باریک‌تر برای ظرافت بیشتر */
 }
 
-body::-webkit-scrollbar-track {
-  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
-  background-color: #f5f5f5;
-  border-radius: 10px;
+/* مسیر اسکرول‌بار (Track) */
+::-webkit-scrollbar-track {
+  background: #ffffff; /* هماهنگ با پس‌زمینه سفید سایت */
+  border-radius: 100px;
 }
 
-body::-webkit-scrollbar {
-  width: 10px;
-  background-color: #f5f5f5;
+/* بخش متحرک (Thumb) */
+::-webkit-scrollbar-thumb {
+  background: #e2e8f0; /* یک خاکستری بسیار ملایم در حالت عادی */
+  border-radius: 100px;
+  border: 2px solid #ffffff; /* ایجاد فاصله ظریف با دیواره‌ها */
+  transition: all 0.4s ease;
 }
 
-body::-webkit-scrollbar-thumb {
-  border-radius: 10px;
-  background-color: #fff;
-  background-image: -webkit-gradient(
-    linear,
-    40% 0%,
-    75% 84%,
-    from(#4d9c41),
-    to(#19911d),
-    color-stop(0.6, #54de5d)
-  );
+/* حالت هاور اسکرول‌بار (وقتی موس روی آن می‌رود) */
+::-webkit-scrollbar-thumb:hover {
+  background: #10b981; /* تبدیل به سبز زمردی برند شما */
+  border: 1px solid #ffffff;
+}
+
+/* برای فایرفاکس (سازگاری کامل) */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #e2e8f0 #ffffff;
+}
+@keyframes reveal {
+  from {
+    opacity: 0;
+    transform: translateY(50px) scale(0.95);
+    filter: blur(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+.animate-reveal {
+  opacity: 0;
+}
+
+.animate-reveal.show {
+  animation: reveal 1.2s cubic-bezier(0.2, 1, 0.2, 1) forwards;
+}
+
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.animate-spin-slow {
+  animation: spin-slow 8s linear infinite;
+}
+.reveal-item {
+  opacity: 0;
+  transform: translateY(60px);
+  filter: blur(15px);
+  transition: all 1.2s cubic-bezier(0.2, 1, 0.2, 1);
+}
+
+.reveal-visible {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }

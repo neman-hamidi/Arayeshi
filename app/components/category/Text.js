@@ -1,8 +1,8 @@
 const details = [
-  { title: "لوسیون بدن", count: "24", src: "/me/images/Frame-19.png" },
-  { title: "کرم مراقبت از پوست", count: "34", src: "/me/images/Frame-20.png" },
-  { title: "ضد جوش و لکه بر", count: "19", src: "/me/images/Frame-21.png" },
-  { title: "آبرسان پوست", count: "8", src: "/me/images/Frame-22.png" },
+  { title: "لوسیون بدن", count: "24", src: "/images/p5.jpg" },
+  { title: "مراقبتی پوست", count: "34", src: "/images/care.jpg" },
+  { title: "ضد جوش", count: "19", src: "/images/anti.jpg" },
+  { title: "آبرسان", count: "8", src: "/images/water.jpg" },
 ];
 
 export default details;

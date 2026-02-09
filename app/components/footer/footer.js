@@ -1,105 +1,130 @@
+"use client";
 import Image from "next/image";
+import Link from "next/link";
 import { icons, lis } from "./Text";
+import { FiSend, FiShield, FiArrowLeft } from "react-icons/fi";
 
-const footer = () => (
-  <>
-    {/* تغییر: اضافه شدن flex-col برای موبایل و lg:flex-row برای دسکتاپ */}
-    <footer className="flex flex-col lg:flex-row border-y border-y-zinc-300">
-      {/* بخش اول: لوگو و خبرنامه */}
-      {/* تغییر: حذف border سمت چپ در موبایل و اضافه کردن border پایین */}
-      <div className="border-b lg:border-b-0 lg:border-l lg:border-l-zinc-300 w-full pb-9">
-        <div className="mt-8 px-6 lg:pr-14 lg:pl-0">
-          <div className="flex justify-center items-center p-2 bg-slate-50 rounded-full w-36 h-11">
-            <div className="ml-2">
-              <Image src="/me/me/images/Star-1.png" alt="" width={25} height={25} />
-            </div>
-            <h3 className="w-[72px] h-7 text-slate-950 text-lg font-bold">
-              لـــــــوگـــــــو
-            </h3>
+const Footer = () => (
+  <footer
+    className="bg-[#050505] text-white pt-24 pb-12 overflow-hidden"
+    dir="rtl"
+  >
+    <div className="max-w-[1440px] mx-auto px-6 lg:px-12">
+      {/* بخش اصلی گرید */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-16 border-b border-white/5 pb-20">
+        {/* ستون ۱: برندینگ و خبرنامه */}
+        <div className="lg:col-span-5 space-y-12">
+          <div className="space-y-6">
+            <h2 className="text-3xl font-black tracking-tighter italic">
+              Sevin
+            </h2>
+            <p className="text-slate-400 leading-8 text-sm max-w-sm font-light">
+              پیشرو در ارائه محصولات پریمیوم مراقبتی. ما استانداردهای زیبایی را
+              برای کسانی که به دنبال کمال هستند، بازتعریف می‌کنیم.
+            </p>
           </div>
 
-          {/* تغییر: w-full در موبایل */}
-          <p className="my-4 w-full lg:w-[452px] mb-7 text-zinc-400 text-sm leading-7 text-justify lg:text-right">
-            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با
-            استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در
-            ستون و سطرآنچنان که
-          </p>
-
-          {/* تغییر: اصلاح عرض فرم خبرنامه */}
-          <div className="relative w-full lg:w-96 max-w-md">
+          <div className="relative max-w-md group">
             <input
-              type="text"
-              placeholder="ایمیل شما..."
-              className="p-3 bg-white rounded-full w-full border border-zinc-100 outline-none focus:border-green-300"
+              type="email"
+              placeholder="عضویت در خبرنامه ویژه..."
+              className="w-full bg-white/5 border border-white/10 rounded-2xl py-5 pr-6 pl-16 outline-none focus:border-green-400 transition-all text-sm placeholder:text-slate-600"
             />
-            <div className="absolute left-1 top-1">
-              <button
-                type="submit"
-                className="py-2 px-4 lg:px-5 bg-green-300 text-[10px] lg:text-xs rounded-full hover:bg-green-400 transition-colors translate-y-1.5 translate-x-1.5"
-              >
-                عضویت در خبرنامه
-              </button>
+            <button className="absolute left-2 top-2 bottom-2 bg-green-400 text-black px-5 rounded-xl hover:bg-white transition-all duration-500 flex items-center justify-center">
+              <FiSend size={20} />
+            </button>
+          </div>
+        </div>
+
+        {/* ستون ۲: لینک‌های مفید */}
+        <div className="lg:col-span-3">
+          <h4 className="text-[10px] font-black text-green-400 uppercase tracking-[0.4em] mb-10">
+            صفحات
+          </h4>
+          <ul className="grid grid-cols-1 gap-6">
+            {lis.map((item, index) => (
+              <li key={index}>
+                <Link
+                  href={item.href}
+                  className="group flex items-center gap-3 text-slate-400 hover:text-white transition-all duration-300"
+                >
+                  <span className="w-0 group-hover:w-6 h-[1px] bg-green-400 transition-all duration-500"></span>
+                  <span className="text-sm font-bold uppercase">
+                    {item.title}
+                  </span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* ستون ۳: نمادهای اعتماد و ای‌نماد (بخش لوکس) */}
+        <div className="lg:col-span-4 flex flex-col items-center lg:items-start space-y-8">
+          <div className="flex items-center gap-3 text-white/40 mb-2">
+            <FiShield size={16} />
+            <span className="text-[10px] font-black tracking-widest uppercase">
+              Trusted & Verified
+            </span>
+          </div>
+
+          <div className="flex gap-4">
+            {/* باکس نماد اعتماد ۱ */}
+            <div className="group relative w-32 h-32 bg-white/5 border border-white/10 rounded-[2.5rem] flex items-center justify-center backdrop-blur-xl transition-all duration-700 hover:border-green-400/50 hover:bg-green-400/[0.02]">
+              <div className="absolute inset-0 bg-green-400/20 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity" />
+              <Image
+                src="/images/image 7.png" // جایگزین موقت عکس ای‌نماد
+                width={70}
+                height={70}
+                loading="lazy"
+                alt="Enamad"
+                className="relative z-10 grayscale group-hover:grayscale-0 transition-all duration-500"
+              />
+            </div>
+            {/* باکس نماد اعتماد ۲ */}
+            <div className="group relative w-32 h-32 bg-white/5 border border-white/10 rounded-[2.5rem] flex items-center justify-center backdrop-blur-xl transition-all duration-700 hover:border-blue-400/50 hover:bg-blue-400/[0.02]">
+              <div className="absolute inset-0 bg-blue-400/20 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity" />
+              <Image
+                src="/images/zarinpal.png" // جایگزین موقت عکس زرین پال
+                width={90}
+                height={120}
+                loading="lazy"
+                alt="Enamad"
+                className="relative z-10 grayscale group-hover:grayscale-0 transition-all duration-500"
+              />
             </div>
           </div>
 
-          <div className="flex mt-10 lg:mt-20 gap-2 justify-center lg:justify-start">
+          <div className="flex gap-4 pt-4">
             {icons.map((item, index) => (
-              <div
+              <a
                 key={index}
-                className="bg-white border border-zinc-100 p-2.5 w-10 h-10 rounded-full flex justify-center items-center hover:bg-zinc-50 cursor-pointer transition-all"
+                href="#"
+                className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center text-slate-400 hover:bg-white hover:text-black transition-all duration-700"
               >
                 {item.icon}
-              </div>
+              </a>
             ))}
           </div>
         </div>
       </div>
 
-      {/* بخش دوم: منو و تصاویر */}
-      <div className="w-full pb-9 lg:pb-0">
-        <div className="px-6 lg:mr-9 mt-8 relative h-full">
-          <div className="flex items-center">
-            <div className="w-7 h-7 bg-green-300 rounded-full"></div>
-            <p className="mr-3 font-medium translate-x-8">منو وب سایت</p>
+      {/* فوتر پایینی: متون حقوقی */}
+      <div className="mt-12 flex flex-col md:flex-row justify-between items-center gap-6">
+        <p className="text-[9px] font-medium text-slate-600 tracking-[0.2em] uppercase">
+          Sevin Cosmetics Group © 2026
+        </p>
+        <button
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          className="group flex items-center gap-3 text-[10px] font-black text-green-400 hover:text-white transition-colors"
+        >
+          <span>بازگشت به بالا</span>
+          <div className="w-8 h-8 rounded-full border border-green-400/30 flex items-center justify-center group-hover:bg-green-400 group-hover:text-black transition-all">
+            <FiArrowLeft className="rotate-90" />
           </div>
-
-          <div className="mt-7">
-            <ul className="flex flex-col gap-5">
-              {lis.map((item, index) => (
-                <li
-                  key={index}
-                  className={`${item.className} hover:text-green-500 cursor-pointer transition-colors`}
-                >
-                  {item.title}
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* بخش تصاویر: در موبایل برای جلوگیری از تداخل مخفی یا جابجا می‌شود */}
-          {/* در اینجا برای موبایل مخفی شده و در دسکتاپ نمایش داده می‌شود */}
-          <div className="hidden lg:flex flex-col gap-y-4 absolute left-20 bottom-8">
-            <img
-              src="/me/images/image (1).png"
-              alt="img"
-              loading="lazy"
-              className="w-20"
-            />
-            <img
-              src="/me/images/image 7.png"
-              alt="img"
-              loading="lazy"
-              className="w-20"
-            />
-          </div>
-        </div>
+        </button>
       </div>
-    </footer>
-
-    <div className="py-5 text-center text-zinc-400 bg-slate-50 lg:bg-transparent">
-      <small className="text-xs">تمام حقوق برای وبسایت محفوظ است.</small>
     </div>
-  </>
+  </footer>
 );
 
-export default footer;
+export default Footer;
